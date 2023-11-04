@@ -1,5 +1,6 @@
 ﻿using JasonMediaTracker.Models;
-
+using JasonMediaTracker.ViewModels;
+using System;
 using Xamarin.Forms;
 
 namespace JasonMediaTracker.Views
@@ -36,12 +37,14 @@ namespace JasonMediaTracker.Views
             Entry titleField = new Entry();
             Label label2 = new Label { FormattedText = label2Text };
             Entry label2Field = new Entry();
+            Label yearCompletedLabel = new Label { FormattedText = yearCompletedText };
+            Entry yearCompletedField = new Entry();
             Label releaseLabel = new Label { FormattedText = releaseText };
             Entry releaseField = new Entry();
-            Label yearCompletedLabel = new Label { FormattedText = yearCompletedText };
-            Entry yearCompletedEntry = new Entry();
             Button submitButton = new Button { Text = "Add" };
+            submitButton.Clicked += (sender, args) => AddViewModel.CreateMedia(mediaType, titleField.Text, label2Field.Text, yearCompletedField.Text, releaseField.Text);
             Button cancelButton = new Button { Text = "Cancel" };
+            cancelButton.Clicked += (sender, args) => ReturnToPrevious(mediaType);
             if (mediaType.GetType() == typeof(Book) | mediaType.GetType() == typeof(Movie))
             {
                 Content = new StackLayout
@@ -69,12 +72,28 @@ namespace JasonMediaTracker.Views
                     label2,
                     label2Field,
                     yearCompletedLabel,
-                    yearCompletedEntry,
+                    yearCompletedField,
                     releaseLabel,
                     releaseField,
                     new StackLayout { Orientation = StackOrientation.Horizontal, Children = { submitButton, cancelButton }}
                 }
                 };
+            }
+        }
+
+        public async void ReturnToPrevious(Media m)
+        {
+            if (m.GetType() == typeof(Book))
+            {
+                await Navigation.PushAsync(new NavigationPage(new BooksPage()));
+            }
+            else if (m.GetType() == typeof(Movie))
+            {
+                await Navigation.PushAsync(new NavigationPage(new MoviesPage()));
+            } 
+            else if (m.GetType() == typeof(TVShow))
+            {
+                await Navigation.PushAsync(new NavigationPage(new TVShowsPage()));
             }
         }
     }
