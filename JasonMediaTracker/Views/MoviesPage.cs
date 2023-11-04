@@ -1,8 +1,5 @@
 ﻿using JasonMediaTracker.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 using Xamarin.Forms;
 
@@ -41,8 +38,9 @@ namespace JasonMediaTracker.Views
                 completedList.ItemsSource = new List<string>() { "Empty" };
             }
             Button addButton = new Button { Text = "+ Add New" };
-            addButton.Clicked += async (sender, e) => {
-                await Navigation.PushAsync(new NavigationPage(new AddPage()));
+            addButton.Clicked += async (sender, e) =>
+            {
+                await Navigation.PushAsync(new NavigationPage(new AddPage(movie)));
             };
             Content = new StackLayout
             {

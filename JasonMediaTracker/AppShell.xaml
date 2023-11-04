@@ -81,9 +81,6 @@
     <FlyoutItem Title="TV Shows">
         <ShellContent Route="TVShowsPage" ContentTemplate="{DataTemplate local:TVShowsPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Add New">
-        <ShellContent Route="AddPage" ContentTemplate="{DataTemplate local:AddPage}" />
-    </FlyoutItem>
 
     <!-- Optional Templates 
     // These may be provided inline as below or as separate classes.

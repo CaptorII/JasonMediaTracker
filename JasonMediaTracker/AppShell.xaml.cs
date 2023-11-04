@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
-
-namespace JasonMediaTracker
+﻿namespace JasonMediaTracker
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {

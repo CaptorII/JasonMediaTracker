@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace JasonMediaTracker.Models
 {
@@ -12,7 +10,7 @@ namespace JasonMediaTracker.Models
         public new TVShow[] unreleased;
         public new TVShow[] completed;
 
-        public TVShow(string title) 
+        public TVShow(string title)
         {
             this.title = title;
         }
@@ -23,7 +21,7 @@ namespace JasonMediaTracker.Models
             this.initialReleaseYear = initialReleaseYear;
         }
 
-        public TVShow(string title, int initialReleaseYear, int yearCompleted) 
+        public TVShow(string title, int initialReleaseYear, int yearCompleted)
         {
             this.title = title;
             this.initialReleaseYear = initialReleaseYear;
