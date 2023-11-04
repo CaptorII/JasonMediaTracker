@@ -11,10 +11,13 @@ namespace JasonMediaTracker.Views
     {
         public AddPage()
         {
+            FormattedString headerText = new FormattedString();
+            headerText.Spans.Add(new Span { Text = "Add", FontAttributes = FontAttributes.Bold });
+            Label header = new Label { FormattedText = headerText, HorizontalTextAlignment = TextAlignment.Center };
             Content = new StackLayout
             {
                 Children = {
-                    new Label { Text = "Welcome to Xamarin.Forms!" }
+                    header
                 }
             };
         }

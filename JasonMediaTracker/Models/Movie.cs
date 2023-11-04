@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JasonMediaTracker.Models
 {
-    internal class Movie : Media
+    public class Movie : Media
     {
         private int releaseYear;
         public new Movie[] uncompleted;

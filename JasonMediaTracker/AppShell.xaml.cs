@@ -10,10 +10,5 @@ namespace JasonMediaTracker
         {
             InitializeComponent();
         }
-
-        private void MenuItem_Clicked(object sender, EventArgs e)
-        {
-
-        }
     }
 }

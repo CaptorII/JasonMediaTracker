@@ -4,7 +4,7 @@ using System.Text;
 
 namespace JasonMediaTracker.Models
 {
-    internal class TVShow : Media
+    public class TVShow : Media
     {
         private int initialReleaseYear;
         private int yearCompleted;
