@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace JasonMediaTracker.ViewModels
 {
-    public static class AddViewModel
+    public class AddViewModel : ContentPage
     {
-        public static void CreateMedia(Book book, string title, string author = "", string releaseDateStr = "")
+        public void CreateMedia(Book book, string title, string author = "", string releaseDateStr = "")
         {
             DateTime releaseDate;
             bool releaseDateExists = DateTime.TryParse(releaseDateStr, out releaseDate);
@@ -30,9 +30,9 @@ namespace JasonMediaTracker.ViewModels
                 Book newBook = new Book(title, author);
                 Book.uncompleted.Add(newBook);
             }
-            // return to books page
+            Shell.Current.Navigation.PopAsync();
         }
-        public static void CreateMedia(Movie movie, string title, string releaseYearStr = "", string releaseDateStr = "")
+        public void CreateMedia(Movie movie, string title, string releaseYearStr = "", string releaseDateStr = "")
         {
             DateTime releaseDate;
             bool releaseDateExists = DateTime.TryParse(releaseDateStr, out releaseDate);
@@ -60,9 +60,9 @@ namespace JasonMediaTracker.ViewModels
                 Movie newMovie = new Movie(title);
                 Movie.uncompleted.Add(newMovie);
             }
-            // return to movies page
+            Shell.Current.Navigation.PopAsync();
         }
-        public static void CreateMedia(TVShow show, string title, string releaseYearStr = "", string completedYearStr = "", string releaseDateStr = "")
+        public void CreateMedia(TVShow show, string title, string releaseYearStr = "", string completedYearStr = "", string releaseDateStr = "")
         {
             DateTime releaseDate;
             bool releaseDateExists = DateTime.TryParse(releaseDateStr, out releaseDate);
@@ -96,7 +96,7 @@ namespace JasonMediaTracker.ViewModels
                 TVShow newTVShow = new TVShow(title);
                 TVShow.uncompleted.Add(newTVShow);
             }
-            // return to tv shows page
+            Shell.Current.Navigation.PopAsync();
         }
     }
 }

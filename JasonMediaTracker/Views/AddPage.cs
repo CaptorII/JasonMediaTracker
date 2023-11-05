@@ -9,6 +9,7 @@ namespace JasonMediaTracker.Views
     {
         public AddPage(Media mediaType)
         {
+            AddViewModel model = new AddViewModel();
             FormattedString headerText = new FormattedString();
             FormattedString titleText = new FormattedString();
             FormattedString label2Text = new FormattedString();
@@ -25,20 +26,20 @@ namespace JasonMediaTracker.Views
             {
                 headerText.Spans.Add(new Span { Text = "Add new Book", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Author:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => AddViewModel.CreateMedia((Book)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
+                submitButton.Clicked += (sender, args) => model.CreateMedia((Book)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
             }
             else if (mediaType.GetType() == typeof(Movie))
             {
                 headerText.Spans.Add(new Span { Text = "Add new Movie", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Release Year:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => AddViewModel.CreateMedia((Movie)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
+                submitButton.Clicked += (sender, args) => model.CreateMedia((Movie)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
             }
             else if (mediaType.GetType() == typeof(TVShow))
             {
                 headerText.Spans.Add(new Span { Text = "Add new TV Show", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Initial Release Year:", FontAttributes = FontAttributes.Bold });
                 yearCompletedText.Spans.Add(new Span { Text = "Year Completed:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => AddViewModel.CreateMedia((TVShow)mediaType, titleField.Text, label2Field.Text, yearCompletedField.Text, releaseField.Text);
+                submitButton.Clicked += (sender, args) => model.CreateMedia((TVShow)mediaType, titleField.Text, label2Field.Text, yearCompletedField.Text, releaseField.Text);
             }
             titleText.Spans.Add(new Span { Text = "Title:", FontAttributes = FontAttributes.Bold });
             releaseText.Spans.Add(new Span { Text = "Release Date:", FontAttributes = FontAttributes.Bold });
@@ -85,18 +86,19 @@ namespace JasonMediaTracker.Views
 
         public async void ReturnToPrevious(Media m)
         {
-            if (m.GetType() == typeof(Book))
-            {
-                await Navigation.PushAsync(new NavigationPage(new BooksPage()));
-            }
-            else if (m.GetType() == typeof(Movie))
-            {
-                await Navigation.PushAsync(new NavigationPage(new MoviesPage()));
-            } 
-            else if (m.GetType() == typeof(TVShow))
-            {
-                await Navigation.PushAsync(new NavigationPage(new TVShowsPage()));
-            }
+            await Shell.Current.Navigation.PopAsync();
+            //if (m.GetType() == typeof(Book))
+            //{
+            //    await Navigation.PushAsync(new NavigationPage(new BooksPage()));
+            //}
+            //else if (m.GetType() == typeof(Movie))
+            //{
+            //    await Navigation.PushAsync(new NavigationPage(new MoviesPage()));
+            //} 
+            //else if (m.GetType() == typeof(TVShow))
+            //{
+            //    await Navigation.PushAsync(new NavigationPage(new TVShowsPage()));
+            //}
         }
     }
 }

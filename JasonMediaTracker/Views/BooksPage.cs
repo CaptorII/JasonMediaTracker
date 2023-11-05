@@ -9,13 +9,16 @@ namespace JasonMediaTracker.Views
         public BooksPage()
         {
             Book book = new Book("");
+            DataTemplate template = new DataTemplate(typeof(SwitchCell));
+            template.SetBinding(SwitchCell.TextProperty, "title");
+            template.SetBinding(SwitchCell.OnProperty, "isCompleted");
             FormattedString headerText = new FormattedString();
             headerText.Spans.Add(new Span { Text = "Books", FontAttributes = FontAttributes.Bold });
             Label header = new Label { FormattedText = headerText, HorizontalTextAlignment = TextAlignment.Center };
             FormattedString uncompletedHeaderText = new FormattedString();
             uncompletedHeaderText.Spans.Add(new Span { Text = "Unread", FontAttributes = FontAttributes.Bold });
             Label uncompletedHeader = new Label { FormattedText = uncompletedHeaderText };
-            ListView uncompletedList = new ListView { ItemsSource = Book.uncompleted };
+            ListView uncompletedList = new ListView { ItemsSource = Book.uncompleted, ItemTemplate = template };
             if (Book.uncompleted == null)
             {
                 uncompletedList.ItemsSource = new List<string>() { "Empty" };
@@ -23,7 +26,7 @@ namespace JasonMediaTracker.Views
             FormattedString unreleasedHeaderText = new FormattedString();
             unreleasedHeaderText.Spans.Add(new Span { Text = "Coming Soon", FontAttributes = FontAttributes.Bold });
             Label unreleasedHeader = new Label { FormattedText = unreleasedHeaderText };
-            ListView unreleasedList = new ListView { ItemsSource = Book.unreleased };
+            ListView unreleasedList = new ListView { ItemsSource = Book.unreleased, ItemTemplate = template };
             if (Book.completed == null)
             {
                 unreleasedList.ItemsSource = new List<string>() { "Empty" };
@@ -31,7 +34,7 @@ namespace JasonMediaTracker.Views
             FormattedString completedHeaderText = new FormattedString();
             completedHeaderText.Spans.Add(new Span { Text = "Previously Read", FontAttributes = FontAttributes.Bold });
             Label completedHeader = new Label { FormattedText = completedHeaderText };
-            ListView completedList = new ListView { ItemsSource = Book.completed };
+            ListView completedList = new ListView { ItemsSource = Book.completed, ItemTemplate = template };
             if (Book.completed == null)
             {
                 completedList.ItemsSource = new List<string>() { "Empty" };

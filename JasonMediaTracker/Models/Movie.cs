@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace JasonMediaTracker.Models
 {
     public class Movie : Media
     {
         private int releaseYear;
-        public static new List<Movie> uncompleted = new List<Movie>();
-        public static new List<Movie> unreleased = new List<Movie>();
-        public static new List<Movie> completed = new List<Movie>();
+        public static new ObservableCollection<Movie> uncompleted = new ObservableCollection<Movie>();
+        public static new ObservableCollection<Movie> unreleased = new ObservableCollection<Movie>();
+        public static new ObservableCollection<Movie> completed = new ObservableCollection<Movie>();
 
         public Movie(string title)
         {
