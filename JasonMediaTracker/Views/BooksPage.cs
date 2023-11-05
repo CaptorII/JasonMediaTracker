@@ -15,24 +15,24 @@ namespace JasonMediaTracker.Views
             FormattedString uncompletedHeaderText = new FormattedString();
             uncompletedHeaderText.Spans.Add(new Span { Text = "Unread", FontAttributes = FontAttributes.Bold });
             Label uncompletedHeader = new Label { FormattedText = uncompletedHeaderText };
-            ListView uncompletedList = new ListView { ItemsSource = book.uncompleted };
-            if (book.uncompleted == null)
+            ListView uncompletedList = new ListView { ItemsSource = Book.uncompleted };
+            if (Book.uncompleted == null)
             {
                 uncompletedList.ItemsSource = new List<string>() { "Empty" };
             }
             FormattedString unreleasedHeaderText = new FormattedString();
             unreleasedHeaderText.Spans.Add(new Span { Text = "Coming Soon", FontAttributes = FontAttributes.Bold });
             Label unreleasedHeader = new Label { FormattedText = unreleasedHeaderText };
-            ListView unreleasedList = new ListView { ItemsSource = book.unreleased };
-            if (book.completed == null)
+            ListView unreleasedList = new ListView { ItemsSource = Book.unreleased };
+            if (Book.completed == null)
             {
                 unreleasedList.ItemsSource = new List<string>() { "Empty" };
             }
             FormattedString completedHeaderText = new FormattedString();
             completedHeaderText.Spans.Add(new Span { Text = "Previously Read", FontAttributes = FontAttributes.Bold });
             Label completedHeader = new Label { FormattedText = completedHeaderText };
-            ListView completedList = new ListView { ItemsSource = book.completed };
-            if (book.completed == null)
+            ListView completedList = new ListView { ItemsSource = Book.completed };
+            if (Book.completed == null)
             {
                 completedList.ItemsSource = new List<string>() { "Empty" };
             }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JasonMediaTracker.Models
 {
@@ -6,9 +7,9 @@ namespace JasonMediaTracker.Models
     {
         private int initialReleaseYear;
         private int yearCompleted;
-        public new TVShow[] uncompleted;
-        public new TVShow[] unreleased;
-        public new TVShow[] completed;
+        public static new List<TVShow> uncompleted = new List<TVShow>();
+        public static new List<TVShow> unreleased = new List<TVShow>();
+        public static new List<TVShow> completed = new List<TVShow>();
 
         public TVShow(string title)
         {

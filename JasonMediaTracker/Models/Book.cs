@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace JasonMediaTracker.Models
 {
     public class Book : Media
     {
         private string author;
-        public new Book[] uncompleted;
-        public new Book[] unreleased;
-        public new Book[] completed;
+        public static new List<Book> uncompleted = new List<Book>();
+        public static new List<Book> unreleased = new List<Book>();
+        public static new List<Book> completed = new List<Book>();
 
         public Book(string title)
         {
