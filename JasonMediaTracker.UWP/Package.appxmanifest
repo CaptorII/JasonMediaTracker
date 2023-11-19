@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="403BE80A-F43E-4C8A-AF49-30F5A81D3558"
-    Publisher="CN=C65EC692-A91F-4006-B57D-0190CE250F8E"
+    Name="1D1C98E1-4CD6-4404-B244-A2A9FA0E9529"
+    Publisher="CN=CD1ADCC1-53E2-4011-A2E1-3A0F2D5592D0"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>JasonMediaTracker.UWP</DisplayName>
-    <PublisherDisplayName>C65EC692-A91F-4006-B57D-0190CE250F8E</PublisherDisplayName>
+    <PublisherDisplayName>CD1ADCC1-53E2-4011-A2E1-3A0F2D5592D0</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

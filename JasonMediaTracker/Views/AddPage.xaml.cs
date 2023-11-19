@@ -1,48 +1,50 @@
 ﻿using JasonMediaTracker.Models;
 using JasonMediaTracker.ViewModels;
-using System;
 using Xamarin.Forms;
 
 namespace JasonMediaTracker.Views
 {
-    public class AddPage : ContentPage
+    public partial class AddPage : ContentPage
     {
         public AddPage(Media mediaType)
         {
             AddViewModel model = new AddViewModel();
             FormattedString headerText = new FormattedString();
             FormattedString titleText = new FormattedString();
+            titleText.Spans.Add(new Span { Text = "Title:", FontAttributes = FontAttributes.Bold });
             FormattedString label2Text = new FormattedString();
             FormattedString releaseText = new FormattedString();
+            releaseText.Spans.Add(new Span { Text = "Release Date:", FontAttributes = FontAttributes.Bold });
             FormattedString yearCompletedText = new FormattedString();
             Entry titleField = new Entry();
             Entry label2Field = new Entry();
             Entry yearCompletedField = new Entry();
-            Entry releaseField = new Entry();
+            DatePicker releaseField = new DatePicker();
             Button submitButton = new Button { Text = "Add" };
             Button cancelButton = new Button { Text = "Cancel" };
-            cancelButton.Clicked += (sender, args) => ReturnToPrevious(mediaType);
+            cancelButton.Clicked += (sender, args) => ReturnToPrevious();
             if (mediaType.GetType() == typeof(Book))
             {
                 headerText.Spans.Add(new Span { Text = "Add new Book", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Author:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => model.CreateMedia((Book)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
+                submitButton.Clicked += (sender, args) => model.CreateMedia((Book)mediaType, titleField.Text, releaseField.Date, label2Field.Text);
             }
             else if (mediaType.GetType() == typeof(Movie))
             {
                 headerText.Spans.Add(new Span { Text = "Add new Movie", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Release Year:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => model.CreateMedia((Movie)mediaType, titleField.Text, label2Field.Text, releaseField.Text);
+                label2Field.Keyboard = Keyboard.Numeric;
+                submitButton.Clicked += (sender, args) => model.CreateMedia((Movie)mediaType, titleField.Text, releaseField.Date, label2Field.Text);
             }
             else if (mediaType.GetType() == typeof(TVShow))
             {
                 headerText.Spans.Add(new Span { Text = "Add new TV Show", FontAttributes = FontAttributes.Bold });
                 label2Text.Spans.Add(new Span { Text = "Initial Release Year:", FontAttributes = FontAttributes.Bold });
+                label2Field.Keyboard = Keyboard.Numeric;
                 yearCompletedText.Spans.Add(new Span { Text = "Year Completed:", FontAttributes = FontAttributes.Bold });
-                submitButton.Clicked += (sender, args) => model.CreateMedia((TVShow)mediaType, titleField.Text, label2Field.Text, yearCompletedField.Text, releaseField.Text);
+                yearCompletedField.Keyboard = Keyboard.Numeric;
+                submitButton.Clicked += (sender, args) => model.CreateMedia((TVShow)mediaType, titleField.Text, releaseField.Date, label2Field.Text, yearCompletedField.Text);
             }
-            titleText.Spans.Add(new Span { Text = "Title:", FontAttributes = FontAttributes.Bold });
-            releaseText.Spans.Add(new Span { Text = "Release Date:", FontAttributes = FontAttributes.Bold });
             Label header = new Label { FormattedText = headerText, HorizontalTextAlignment = TextAlignment.Center };
             Label titleLabel = new Label { FormattedText = titleText };
             Label label2 = new Label { FormattedText = label2Text };
@@ -61,7 +63,7 @@ namespace JasonMediaTracker.Views
                     releaseLabel,
                     releaseField,
                     new StackLayout { Orientation = StackOrientation.Horizontal, Children = { submitButton, cancelButton }}
-                }
+                    }
                 };
             }
             else if (mediaType.GetType() == typeof(TVShow))
@@ -79,26 +81,14 @@ namespace JasonMediaTracker.Views
                     releaseLabel,
                     releaseField,
                     new StackLayout { Orientation = StackOrientation.Horizontal, Children = { submitButton, cancelButton }}
-                }
+                    }
                 };
             }
         }
 
-        public async void ReturnToPrevious(Media m)
+        public async void ReturnToPrevious()
         {
             await Shell.Current.Navigation.PopAsync();
-            //if (m.GetType() == typeof(Book))
-            //{
-            //    await Navigation.PushAsync(new NavigationPage(new BooksPage()));
-            //}
-            //else if (m.GetType() == typeof(Movie))
-            //{
-            //    await Navigation.PushAsync(new NavigationPage(new MoviesPage()));
-            //} 
-            //else if (m.GetType() == typeof(TVShow))
-            //{
-            //    await Navigation.PushAsync(new NavigationPage(new TVShowsPage()));
-            //}
         }
     }
 }

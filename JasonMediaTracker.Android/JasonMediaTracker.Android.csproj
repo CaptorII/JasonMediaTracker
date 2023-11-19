@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{96A92CD2-0051-4670-9864-ABAD0FFF77CE}</ProjectGuid>
+    <ProjectGuid>{D580B77C-C6D9-4310-9154-E63E377EEC01}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
     <OutputType>Library</OutputType>
@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JasonMediaTracker\JasonMediaTracker.csproj">
-      <Project>{4682129B-52AE-47FC-B489-FB9BAE07B6A9}</Project>
+      <Project>{3647F5BD-8316-43B7-80D9-617C2F2536B6}</Project>
       <Name>JasonMediaTracker</Name>
     </ProjectReference>
   </ItemGroup>

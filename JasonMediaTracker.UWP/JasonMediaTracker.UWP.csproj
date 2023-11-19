@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{D12E8828-E0B7-4264-80BA-6F603C2B2977}</ProjectGuid>
+    <ProjectGuid>{4078F5E5-12CE-4D34-9ECE-26870E71C9C8}</ProjectGuid>
     <TemplateGuid>{98C37F10-6541-44BE-B1E6-7EB3EB8C08F1}</TemplateGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -153,7 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JasonMediaTracker\JasonMediaTracker.csproj">
-      <Project>{4682129B-52AE-47FC-B489-FB9BAE07B6A9}</Project>
+      <Project>{3647F5BD-8316-43B7-80D9-617C2F2536B6}</Project>
       <Name>JasonMediaTracker</Name>
     </ProjectReference>
   </ItemGroup>

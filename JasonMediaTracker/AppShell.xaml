@@ -21,10 +21,6 @@
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
 
-            <!--
-            Default Styles for all Flyout Items
-            https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
-            -->
             <Style Class="FlyoutItemLabelStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="White"></Setter>
             </Style>
@@ -48,9 +44,6 @@
                 </Setter>
             </Style>
 
-            <!--
-            Custom Style you can apply to any Flyout Item
-            -->
             <Style Class="MenuItemLayoutStyle" TargetType="Layout" ApplyToDerivedTypes="True">
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
@@ -67,11 +60,6 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <!-- 
-        When the Flyout is visible this defines the content to display in the flyout.
-        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element    
-        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
-    -->
     <FlyoutItem Title="Books">
         <ShellContent Route="BooksPage" ContentTemplate="{DataTemplate local:BooksPage}" />
     </FlyoutItem>
@@ -79,40 +67,6 @@
         <ShellContent Route="MoviesPage" ContentTemplate="{DataTemplate local:MoviesPage}" />
     </FlyoutItem>
     <FlyoutItem Title="TV Shows">
-        <ShellContent Route="TVShowsPage" ContentTemplate="{DataTemplate local:TVShowsPage}" />
+        <ShellContent Route="TVShowsPage" ContentTemplate="{DataTemplate local:TVShowPage}" />
     </FlyoutItem>
-
-    <!-- Optional Templates 
-    // These may be provided inline as below or as separate classes.
-
-    // This header appears at the top of the Flyout.
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyout-header
-    <Shell.FlyoutHeaderTemplate>
-        <DataTemplate>
-            <Grid>ContentHere</Grid>
-        </DataTemplate>
-    </Shell.FlyoutHeaderTemplate>
-
-    // ItemTemplate is for ShellItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-flyoutitem-appearance
-    <Shell.ItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Title, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.ItemTemplate>
-
-    // MenuItemTemplate is for MenuItems as displayed in a Flyout
-    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-menuitem-appearance
-    <Shell.MenuItemTemplate>
-        <DataTemplate>
-            <ContentView>
-                Bindable Properties: Text, Icon
-            </ContentView>
-        </DataTemplate>
-    </Shell.MenuItemTemplate>
-
-    -->
-
 </Shell>

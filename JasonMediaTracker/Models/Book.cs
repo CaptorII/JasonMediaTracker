@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace JasonMediaTracker.Models
 {
     public class Book : Media
     {
-        private string author;
-        public static new ObservableCollection<Book> uncompleted = new ObservableCollection<Book>();
-        public static new ObservableCollection<Book> unreleased = new ObservableCollection<Book>();
-        public static new ObservableCollection<Book> completed = new ObservableCollection<Book>();
+        public string author { get; set; }
+
+        public Book() { }
 
         public Book(string title)
         {

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JasonMediaTracker.Views.BooksPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Books" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+            <Label Text="Unread" FontAttributes="Bold"/>
+            <ListView x:Name="UncompletedList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding title}" VerticalOptions="Center"/>
+                                <Label Text="-" VerticalOptions="Center"/>
+                                <Label Text="{Binding author}" VerticalOptions="Center"/>
+                                <Switch IsToggled="{Binding isCompleted}" OnColor="Green" ThumbColor="White" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label Text="Coming Soon" FontAttributes="Bold"/>
+            <ListView x:Name="UnreleasedList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding title}" />
+                                <Label Text="-" />
+                                <Label Text="{Binding author}" />
+                                <Label Text="{Binding releaseDate, StringFormat='{0:d}'}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label Text="Previously Read" FontAttributes="Bold"/>
+            <ListView x:Name="CompletedList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" >
+                                <Label Text="{Binding title}" VerticalOptions="Center"/>
+                                <Label Text="-" VerticalOptions="Center"/>
+                                <Label Text="{Binding author}" VerticalOptions="Center"/>
+                                <Switch IsToggled="{Binding isCompleted}" OnColor="Green" ThumbColor="White" HorizontalOptions="End"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="+ Add New" Clicked="AddButtonClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace JasonMediaTracker.Models
 {
     public class TVShow : Media
     {
-        private int initialReleaseYear;
-        private int yearCompleted;
-        public static new ObservableCollection<TVShow> uncompleted = new ObservableCollection<TVShow>();
-        public static new ObservableCollection<TVShow> unreleased = new ObservableCollection<TVShow>();
-        public static new ObservableCollection<TVShow> completed = new ObservableCollection<TVShow>();
+        public int initialReleaseYear, yearCompleted;
+
+        public TVShow() { }
 
         public TVShow(string title)
         {
