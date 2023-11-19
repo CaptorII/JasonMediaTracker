@@ -4,7 +4,7 @@ namespace JasonMediaTracker.Models
 {
     public class Movie : Media
     {
-        public int releaseYear;
+        public int releaseYear { get; set; }
 
         public Movie() { }
 

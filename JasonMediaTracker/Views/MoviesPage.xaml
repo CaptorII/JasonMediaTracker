@@ -4,13 +4,20 @@
              x:Class="JasonMediaTracker.Views.MoviesPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Movies" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="Movies" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Medium" />
 
             <Label Text="Unwatched" FontAttributes="Bold"/>
             <ListView x:Name="UncompletedList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="Empty" On="False"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                <Label Text="{Binding title}" VerticalOptions="Center"/>
+                                <Label Text="•" VerticalOptions="Center"/>
+                                <Label Text="{Binding releaseYear}" VerticalOptions="Center"/>
+                                <Switch IsToggled="{Binding isCompleted}" Toggled="MarkCompleted" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -19,7 +26,13 @@
             <ListView x:Name="UnreleasedList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="Empty" On="False"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                <Label Text="{Binding title}" VerticalOptions="Center"/>
+                                <Label Text="•" VerticalOptions="Center"/>
+                                <Label Text="{Binding releaseDate, StringFormat='{0:d}'}" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -28,7 +41,14 @@
             <ListView x:Name="CompletedList">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <SwitchCell Text="Empty" On="False"/>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10,0,0,0">
+                                <Label Text="{Binding title}" VerticalOptions="Center"/>
+                                <Label Text="•" VerticalOptions="Center"/>
+                                <Label Text="{Binding releaseYear}" VerticalOptions="Center"/>
+                                <Switch IsToggled="{Binding isCompleted}" Toggled="MarkIncomplete" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

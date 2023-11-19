@@ -4,7 +4,8 @@ namespace JasonMediaTracker.Models
 {
     public class TVShow : Media
     {
-        public int initialReleaseYear, yearCompleted;
+        public int initialReleaseYear { get; set; }
+        public int yearCompleted { get; set; }
 
         public TVShow() { }
 

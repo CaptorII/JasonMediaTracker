@@ -11,7 +11,7 @@ namespace JasonMediaTracker.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BooksPage : ContentPage
     {
-        Book book = new Book("");
+        Book book = new Book();
         ObservableCollection<Book> uncompletedBooks, unreleasedBooks, completedBooks;
         public BooksPage()
         {
@@ -19,21 +19,22 @@ namespace JasonMediaTracker.Views
             uncompletedBooks = new ObservableCollection<Book>();
             unreleasedBooks = new ObservableCollection<Book>();
             completedBooks = new ObservableCollection<Book>();
-            Database.InitialiseDatabase();
             InitialiseBooks();
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            RefreshBooks();
+            if (Database.IsInitialized) 
+                RefreshBooks();
         }
 
         public async void InitialiseBooks()
         {
+            Database.InitialiseDatabase();
             while (!Database.IsInitialized)
             {
-                await Task.Delay(100); // Delay and check again until the database is initialized
+                await Task.Delay(100); // delay and check again until the database is initialized
             }
             RefreshBooks();
             UncompletedList.ItemsSource = uncompletedBooks;
@@ -52,14 +53,47 @@ namespace JasonMediaTracker.Views
                 if (book.releaseDate > DateTime.Today) // if release date is in the future
                 {
                     unreleasedBooks.Add(book);
-                    return;
                 }
-                if (book.isCompleted)
+                else if (book.isCompleted)
                 {
                     completedBooks.Add(book);
-                    return;
                 }
-                uncompletedBooks.Add(book);
+                else
+                {
+                    uncompletedBooks.Add(book);
+                }
+            }
+        }
+
+        private async void MarkCompleted(object sender, ToggledEventArgs e)
+        {
+            if (sender is Switch toggleSwitch && toggleSwitch.BindingContext is Book book)
+            {
+                if (!toggleSwitch.IsToggled) return; // prevents method running every time lists are refreshed
+
+                book.isCompleted = true;
+                Database.UpdateTable(book);
+                while (!Database.OperationCompleted)
+                {
+                    await Task.Delay(100); // delay and check again until the task is completed
+                }
+                RefreshBooks();
+            }
+        }
+
+        private async void MarkIncomplete(object sender, ToggledEventArgs e)
+        {
+            if (sender is Switch toggleSwitch && toggleSwitch.BindingContext is Book book)
+            {
+                if (toggleSwitch.IsToggled) return; // prevents method running every time lists are refreshed
+
+                book.isCompleted = false;
+                Database.UpdateTable(book);
+                while (!Database.OperationCompleted)
+                {
+                    await Task.Delay(100); // delay and check again until the task is completed
+                }
+                RefreshBooks();
             }
         }
 

@@ -54,6 +54,7 @@ namespace JasonMediaTracker.Views
             {
                 Content = new StackLayout
                 {
+                    Padding = new Thickness(10),
                     Children = {
                     header,
                     titleLabel,
@@ -62,7 +63,7 @@ namespace JasonMediaTracker.Views
                     label2Field,
                     releaseLabel,
                     releaseField,
-                    new StackLayout { Orientation = StackOrientation.Horizontal, Children = { submitButton, cancelButton }}
+                    new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.FillAndExpand, Children = { submitButton, cancelButton }}
                     }
                 };
             }
@@ -70,6 +71,7 @@ namespace JasonMediaTracker.Views
             {
                 Content = new StackLayout
                 {
+                    Padding = new Thickness(10),
                     Children = {
                     header,
                     titleLabel,
@@ -80,7 +82,7 @@ namespace JasonMediaTracker.Views
                     yearCompletedField,
                     releaseLabel,
                     releaseField,
-                    new StackLayout { Orientation = StackOrientation.Horizontal, Children = { submitButton, cancelButton }}
+                    new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.FillAndExpand, Children = { submitButton, cancelButton }}
                     }
                 };
             }

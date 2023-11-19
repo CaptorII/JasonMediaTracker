@@ -10,6 +10,7 @@ namespace JasonMediaTracker.Models
         public static SQLiteAsyncConnection db;
         static string fileName = "MediaDatabase.sql";
         public static bool IsInitialized { get; private set; } = false;
+        public static bool OperationCompleted { get; private set; } = false;
 
         public static async void InitialiseDatabase()
         {
@@ -21,6 +22,24 @@ namespace JasonMediaTracker.Models
             await db.CreateTableAsync<Movie>();
             await db.CreateTableAsync<TVShow>();
             IsInitialized = true;
+        }
+
+        public static async void UpdateTable(Media m)
+        {
+            OperationCompleted = false;
+            if (m.GetType() == typeof(Book))
+            {
+                await db.UpdateAsync((Book)m);
+            }
+            else if (m.GetType() == typeof(Movie))
+            {
+                await db.UpdateAsync((Movie)m);
+            }
+            else if (m.GetType() == typeof(TVShow))
+            {
+                await db.UpdateAsync((TVShow)m);
+            }
+            OperationCompleted = true;
         }
     }
 }
