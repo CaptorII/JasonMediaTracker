@@ -25,20 +25,20 @@ namespace JasonMediaTracker.Views
             cancelButton.Clicked += (sender, args) => ReturnToPrevious();
             if (mediaType.GetType() == typeof(Book))
             {
-                headerText.Spans.Add(new Span { Text = "Add new Book", FontAttributes = FontAttributes.Bold });
+                headerText.Spans.Add(new Span { Text = "Add new Book", FontAttributes = FontAttributes.Bold, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))});
                 label2Text.Spans.Add(new Span { Text = "Author:", FontAttributes = FontAttributes.Bold });
                 submitButton.Clicked += (sender, args) => model.CreateMedia((Book)mediaType, titleField.Text, releaseField.Date, label2Field.Text);
             }
             else if (mediaType.GetType() == typeof(Movie))
             {
-                headerText.Spans.Add(new Span { Text = "Add new Movie", FontAttributes = FontAttributes.Bold });
+                headerText.Spans.Add(new Span { Text = "Add new Movie", FontAttributes = FontAttributes.Bold, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))});
                 label2Text.Spans.Add(new Span { Text = "Release Year:", FontAttributes = FontAttributes.Bold });
                 label2Field.Keyboard = Keyboard.Numeric;
                 submitButton.Clicked += (sender, args) => model.CreateMedia((Movie)mediaType, titleField.Text, releaseField.Date, label2Field.Text);
             }
             else if (mediaType.GetType() == typeof(TVShow))
             {
-                headerText.Spans.Add(new Span { Text = "Add new TV Show", FontAttributes = FontAttributes.Bold });
+                headerText.Spans.Add(new Span { Text = "Add new TV Show", FontAttributes = FontAttributes.Bold, FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))});
                 label2Text.Spans.Add(new Span { Text = "Initial Release Year:", FontAttributes = FontAttributes.Bold });
                 label2Field.Keyboard = Keyboard.Numeric;
                 yearCompletedText.Spans.Add(new Span { Text = "Year Completed:", FontAttributes = FontAttributes.Bold });
@@ -63,7 +63,10 @@ namespace JasonMediaTracker.Views
                     label2Field,
                     releaseLabel,
                     releaseField,
-                    new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.FillAndExpand, Children = { submitButton, cancelButton }}
+                    new Grid {
+                        Children = {
+                            { submitButton, 0, 0 },
+                            { cancelButton, 1, 0 }}} 
                     }
                 };
             }
@@ -82,7 +85,10 @@ namespace JasonMediaTracker.Views
                     yearCompletedField,
                     releaseLabel,
                     releaseField,
-                    new StackLayout { Orientation = StackOrientation.Horizontal, HorizontalOptions = LayoutOptions.FillAndExpand, Children = { submitButton, cancelButton }}
+                    new Grid {
+                        Children = {
+                            { submitButton, 0, 0 },
+                            { cancelButton, 1, 0 }}}
                     }
                 };
             }
